@@ -2,9 +2,10 @@ import jobsModel from "../models/jobsModel.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
-// ====== CREATE JOB ====================
+// ====== CREATE JOB ===================================
 
 export const createJobController = async (req, res, next) => {
+  
   const { company, position } = req.body;
   if (!company || !position) {
     next("Please Provide All Fields");
@@ -14,7 +15,7 @@ export const createJobController = async (req, res, next) => {
   res.status(201).json({ job });
 };
 
-// ======= GET JOBS ======================
+// ======= GET JOBS =====================================
 
 export const getAllJobsController = async (req, res, next) => {
   const { status, workType, search, sort } = req.query;
@@ -68,7 +69,7 @@ export const getAllJobsController = async (req, res, next) => {
   });
 };
 
-// ======= UPDATE JOBS ============================
+// ======= UPDATE JOBS ==============================================
 
 export const updateJobController = async (req, res, next) => {
   const { id } = req.params;
@@ -95,7 +96,7 @@ export const updateJobController = async (req, res, next) => {
   res.status(200).json({ updateJob });
 };
 
-// ======= DELETE JOBS ==========================
+// ======= DELETE JOBS ==================================================
 
 export const deleteJobController = async (req, res, next) => {
   const { id } = req.params;
@@ -113,7 +114,7 @@ export const deleteJobController = async (req, res, next) => {
   res.status(200).json({ message: "Success, Job Deleted!" });
 };
 
-// =======  JOBS STATS & FILTERS ======================
+// =======  JOBS STATS & FILTERS ========================================
 
 export const jobStatsController = async (req, res) => {
   const stats = await jobsModel.aggregate([

@@ -1,5 +1,7 @@
 import userModel from "../models/userModel.js";
 
+//register-------------------------------------
+
 export const registerController = async (req, res, next) => {
   const { name, email, password } = req.body;
   //validate
@@ -31,6 +33,8 @@ export const registerController = async (req, res, next) => {
     token,
   });
 };
+
+///login------------------------------------------------
 
 export const loginController = async (req, res, next) => {
   const { email, password } = req.body;
